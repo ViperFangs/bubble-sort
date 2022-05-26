@@ -14,7 +14,7 @@ def bubble_sort_helper(array)
 
 end
 
-def swap_needed? (array, index)
+def swap_needed?(array, index)
 
   array[index + 1] == nil ? false : array[index] > array[index + 1]
 

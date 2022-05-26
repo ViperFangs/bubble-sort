@@ -2,42 +2,36 @@ def bubble_sort(unsorted_array)
 
   sorted_array = []
   
-  unsorted_array.each_index do |number|
+  unsorted_array.each_index {|index| sorted_array = bubble_sort_switch(unsorted_array)}
 
-    pass = 0
+  puts "#{sorted_array}"
 
-    unsorted_array.each_index do |index|
+end
 
-      unless unsorted_array[index + 1] == nil
+def bubble_sort_switch(array)
 
-        if unsorted_array[index] > unsorted_array[index + 1] 
-          bubble_sort_switch(unsorted_array, index)
-          pass = 1
-        else
-          next
-        end
+  array.each_index do |index| 
 
+    unless array[index + 1] == nil
+
+      if array[index] > array[index + 1] 
+        temp = array[index]
+        array[index] = array[index + 1]
+        array[index + 1] = temp
+
+      else
+        next
       end
-
-      break if pass == 0
 
     end
 
   end
 
-  puts "#{unsorted_array}"
-
-end
-
-def bubble_sort_switch(array, index)
-
-  temp = array[index]
-  array[index] = array[index + 1]
-  array[index + 1] = temp
-
   return array
 
 end
+
+def copy_method ()
 
 
 bubble_sort([4,3,78,2,0,2]) #[0,2,2,3,4,78]

@@ -10,7 +10,7 @@ end
 
 def bubble_sort_helper(array)
 
-  array.each_index { |index| swap_needed?(array, index) ?  variable_switch(array , index) : (next)  }
+  array.each_index {|index| variable_switch(array, index) if swap_needed?(array, index)}
 
 end
 

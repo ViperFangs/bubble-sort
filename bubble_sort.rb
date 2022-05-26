@@ -2,36 +2,27 @@ def bubble_sort(unsorted_array)
 
   sorted_array = []
   
-  unsorted_array.each_index {|index| sorted_array = bubble_sort_switch(unsorted_array)}
+  unsorted_array.each_index {|index| sorted_array = bubble_sort_helper(unsorted_array)}
 
   puts "#{sorted_array}"
 
 end
 
-def bubble_sort_switch(array)
+def bubble_sort_helper(array)
 
-  array.each_index do |index| 
-
-    unless array[index + 1] == nil
-
-      if array[index] > array[index + 1] 
-        temp = array[index]
-        array[index] = array[index + 1]
-        array[index + 1] = temp
-
-      else
-        next
-      end
-
-    end
-
-  end
-
-  return array
+  array.each_index { |index| swap_needed?(array, index) ?  variable_switch(array , index) : (next)  }
 
 end
 
-def copy_method ()
+def swap_needed? (array, index)
 
+  array[index + 1] == nil ? false : array[index] > array[index + 1]
 
-bubble_sort([4,3,78,2,0,2]) #[0,2,2,3,4,78]
+end
+
+def variable_switch(array , index)
+
+  array[index], array[index + 1] = array[index + 1], array[index]
+
+end
+
